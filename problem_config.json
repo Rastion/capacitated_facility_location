@@ -1,0 +1,41 @@
+{
+    "entry_point": "capacitated_facility_location_problem:CapacitatedFacilityLocationProblem",
+    "default_params": {
+      "instance_file": "instances/cap61"
+    },
+    "problem_type": "CapacitatedFacilityLocation",
+    "description": "The capacitated facility location problem involves selecting a subset of potential facilities to open and assigning each site to an open facility so as to minimize the total cost. The cost for a facility is defined as the sum of a fixed opening cost and the allocation costs for serving the sites assigned to it, while each facility's capacity must not be exceeded by the total demand of the sites it serves.",
+    "keywords": [
+      "facility location",
+      "warehouse location",
+      "p-median",
+      "capacitated",
+      "optimization"
+    ],
+    "data_format": {
+      "instance_file": {
+        "format": "First two numbers: number of potential facilities and number of sites. Then, for each facility: capacity and fixed opening cost. Next, for each site: demand. Finally, for each facility-site pair: the allocation cost from that facility to that site."
+      }
+    },
+    "decision_variables": {
+      "facility_assignment": {
+        "type": "list of int",
+        "description": "A list of length equal to the number of sites, where each integer represents the facility (0-indexed) assigned to that site."
+      }
+    },
+    "objective": {
+      "type": "minimization",
+      "function": "Total cost",
+      "description": "Minimize the sum of fixed opening costs (for open facilities) plus the allocation costs for serving all sites, subject to capacity constraints."
+    },
+    "solution_representation": "A list of integers of length equal to the number of sites, where each integer is the assigned facility index (0-indexed).",
+    "compatible_optimizers": [
+      "genetic_algorithm",
+      "simulated_annealing",
+      "particle_swarm",
+      "tabu_search",
+      "greedy"
+    ],
+    "notes": "Instances are from OR-LIB test problems (cap61, cap62, etc.). This problem is also known as the capacitated warehouse location problem or the capacitated p-median problem."
+  }
+  
